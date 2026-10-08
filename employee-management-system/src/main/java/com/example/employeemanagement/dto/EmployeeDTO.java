@@ -4,11 +4,15 @@ import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Positive;
+import jakarta.validation.constraints.Pattern;
 
 public class EmployeeDTO {
 
     private Long id;
     @NotBlank(message="name is required")
+    @Pattern(
+            regexp = "^[a-zA-Z\\s]+$",
+            message = "name must contain only letters and spaces")
     private String name;
     @NotBlank(message="email is required")
     @Email(message="Please enter a valid email address")
@@ -23,10 +27,6 @@ public class EmployeeDTO {
 
     public Long getId() {
         return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
     }
 
     public String getName() {
