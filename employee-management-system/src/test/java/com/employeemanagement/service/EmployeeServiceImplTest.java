@@ -4,17 +4,20 @@ import com.example.employeemanagement.service.impl.EmployeeServiceImpl;
 import com.example.employeemanagement.repository.HibernateRepository;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.Mock;
-import org.mockito.MockitoAnnotations;
 import static org.mockito.Mockito.*;
 import static org.junit.jupiter.api.Assertions.*;
 import com.example.employeemanagement.dto.EmployeeDTO;
 import com.example.employeemanagement.entity.Employee;
 import com.example.employeemanagement.exception.EmployeeNotFoundException;
 import com.example.employeemanagement.exception.DuplicationEmailException;
+import org.mockito.junit.jupiter.MockitoExtension;
+
 import java.util.List;
 import java.util.Optional;
 
+@ExtendWith(MockitoExtension.class)
 public class EmployeeServiceImplTest {
     @Mock
     private HibernateRepository hibernateRepository;
@@ -22,7 +25,6 @@ public class EmployeeServiceImplTest {
 
     @BeforeEach
     void setUp() {
-        MockitoAnnotations.openMocks(this);
         employeeService = new EmployeeServiceImpl(hibernateRepository);
     }
     @Test
